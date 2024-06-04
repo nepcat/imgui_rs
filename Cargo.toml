@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 build = "build.rs"
 authors = ["nepcat"]
-description = "Low level bindings for the Dear ImGui library"
+description = "Raw bindings for the Dear ImGui library"
 
 [build-dependencies]
 anyhow = { version = "1.0.86" }
@@ -15,7 +15,7 @@ log = { version = "0.4.21" }
 build-target = { version = "0.4.0" }
 bindgen = { version = "0.69.4" }
 cc = { version = "1.0.98", features = ["parallel"] }
-pkg-config = { version = "0.3", optional = true }
+pkg-config = { version = "0.3.30", optional = true }
 
 [features]
 freetype = ["dep:pkg-config"]
