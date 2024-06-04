@@ -1,0 +1,38 @@
+[package]
+name = "imgui_rs"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+authors = ["nepcat"]
+description = "Low level bindings for the Dear ImGui library"
+
+[build-dependencies]
+anyhow = { version = "1.0.86" }
+
+env_logger = { version = "0.11.3" }
+log = { version = "0.4.21" }
+
+build-target = { version = "0.4.0" }
+bindgen = { version = "0.69.4" }
+cc = { version = "1.0.98", features = ["parallel"] }
+pkg-config = { version = "0.3", optional = true }
+
+[features]
+freetype = ["dep:pkg-config"]
+docking = []
+
+# Cross platform
+sdl2 = ["dep:pkg-config"]
+sdl2_renderer = ["sdl2"]
+sdl3 = ["dep:pkg-config"]
+sdl3_renderer = ["sdl3"]
+gl2 = []
+gl3 = []
+vulkan = []
+
+# Windows
+win32 = []
+dx9 = []
+dx10 = []
+dx11 = []
+dx12 = []
