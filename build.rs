@@ -172,6 +172,14 @@ fn try_main() -> anyhow::Result<()> {
                 },
             },
         ));
+        imgui_backend_files.push((
+            manifest_directory.join("imgui_impl_win32_wrapper.hpp"),
+            CompileFile {
+                r#type: CompileFileType::Header {
+                    should_bindgen: true,
+                },
+            },
+        ));
     } else {
         log::info!("Target OS is not windows, skipping win32 feature!");
     }
