@@ -15,10 +15,13 @@ imgui_rs = { path = "path/to/imgui_rs/", features = ... }
 ```
 
 # Dependencies
-This crate depends on **pkg-config**, **clang** (for bindgen), also requires the Rust nightly toolchain for it to compile.
+This crate depends on **pkg-config**, **clang** (for bindgen).
+
+# Rust toolchain
+Nightly only
 
 # Supported platforms
-Both Windows (GNU/MSVC) and Linux should work as long as you meet all dependency criteria.
+Both Windows (Only GNU, MSVC is [broken](https://github.com/nepcat/imgui_rs/issues/1)) and Linux should work as long as you meet all dependency criteria.
 
 # Available features
 * **freetype** - Freetype support
