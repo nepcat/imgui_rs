@@ -427,19 +427,16 @@ fn try_main() -> anyhow::Result<()> {
 
     /* Add bindgen header files */
     for (file_path, file) in &imgui_files {
-        match file.r#type {
-            CompileFileType::Header { should_bindgen } => {
-                if should_bindgen {
-                    log::debug!("Bindgen file {}", file_path.display());
-                    let file_path_lossy = file_path.to_string_lossy();
-                    builder = builder
-                        .header(file_path_lossy.clone())
-                        .allowlist_file(file_path_lossy);
-                } else {
-                    continue;
-                }
+        if let CompileFileType::Header { should_bindgen } = file.r#type {
+            if should_bindgen {
+                log::debug!("Bindgen file {}", file_path.display());
+                let file_path_lossy = file_path.to_string_lossy();
+                builder = builder
+                    .header(file_path_lossy.clone())
+                    .allowlist_file(file_path_lossy);
+            } else {
+                continue;
             }
-            CompileFileType::Source => continue,
         }
     }
 
@@ -469,11 +466,8 @@ fn try_main() -> anyhow::Result<()> {
     build.file("wrapper.cpp");
     /* Add all source files */
     for (file_path, file) in &imgui_files {
-        match file.r#type {
-            CompileFileType::Header { should_bindgen: _ } => continue,
-            CompileFileType::Source => {
-                build.file(file_path);
-            }
+        if let CompileFileType::Source = file.r#type {
+            build.file(file_path);
         }
     }
     /* Freetype */
