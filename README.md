@@ -42,7 +42,6 @@ Both Windows (Only GNU, MSVC is [broken](https://github.com/nepcat/imgui_rs/issu
 # Example usage
 ```rust
 #![allow(clippy::never_loop)]
-use imgui_rs::root as imgui_rs;
 
 pub fn main() {
     /* Initialize SDL2, OpenGL3, ... */
