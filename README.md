@@ -8,8 +8,6 @@ $ git clone --recurse-submodules https://github.com/nepcat/imgui_rs
 ```
 ### Cargo.toml
 ```toml
-...
-
 [dependencies]
 imgui_rs = { path = "path/to/imgui_rs/", features = ... }
 ```
